@@ -1,13 +1,32 @@
 [project]
 name = "c3-multi-agent-trading"
 version = "0.1.0"
-description = "Yash Patel - Finance Project: c3-multi-agent-trading"
+description = "C3 Multi-Agent Trading Research System: 3 LLM agents debate trading strategy proposals"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.10"
+authors = [{ name = "Yash Patel", email = "yashpatel06050@gmail.com" }]
+dependencies = [
+    "ollama>=0.3.0",
+    "pandas>=2.0",
+    "yfinance>=0.2.40",
+    "backtesting>=0.3.3",
+    "matplotlib>=3.7",
+    "plotly>=5.0",
+    "streamlit>=1.30",
+    "click>=8.1",
+    "numpy>=1.24",
+]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+dev = ["pytest>=8.0", "pytest-mock>=3.12"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
