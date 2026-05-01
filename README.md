@@ -6,6 +6,29 @@
 >
 > Asset Management / IB resume signal.
 
+## Demo
+
+![SPY 50/200 EMA crossover equity curve, 2020-2024](docs/equity-curve.png)
+
+```text
+$ python scripts/run_demo.py --offline
+Backtest: SPY 50/200 EMA crossover, 2020-2024, 10bps fills, $100k
+  Total return     +82.23%   (buy & hold +95.30%)
+  Sharpe            0.862
+  Max drawdown    -18.17%
+  Trades              3
+
+ROUND 2 final votes:
+  Quant      APPROVE  (0.62)
+  Risk       MODIFY   (0.78)   <- formal dissent: vol-target + -10% stop
+  Compliance APPROVE  (0.90)
+VERDICT: APPROVED  (2 approve / 0 reject / 1 modify)
+```
+
+Full output: [`docs/cli-demo.txt`](docs/cli-demo.txt) | Full debate: [`docs/sample-debate.md`](docs/sample-debate.md)
+
+---
+
 ## Why this project
 
 Real trading committees never approve a strategy on a single voice. A quant
