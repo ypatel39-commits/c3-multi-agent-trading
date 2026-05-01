@@ -1,0 +1,38 @@
+$ python scripts/run_demo.py --offline
+[INFO] Loading SPY OHLCV from yfinance (2020-01-02 to 2024-12-30)
+[INFO] Running backtest: 50/200 EMA crossover, 10bps fills, $100k capital
+
+Backtest metrics
++---------------------+-----------+
+| metric              | value     |
++---------------------+-----------+
+| Total return        |   82.23%  |
+| Buy & hold return   |   95.30%  |
+| Sharpe ratio        |    0.862  |
+| Max drawdown        |  -18.17%  |
+| Number of trades    |        3  |
++---------------------+-----------+
+
+[INFO] Building proposal payload for committee review
+[INFO] Initialising agents (offline mock LLM, deterministic)
+
+ROUND 1 — opening positions
+  Quant      APPROVE  (conf 0.62) - trend-following sleeve, modest Sharpe
+  Risk       MODIFY   (conf 0.78) - require vol-target + -10% hard stop
+  Compliance APPROVE  (conf 0.90) - regulated ETF, lit venue, no MNPI
+
+ROUND 2 — final votes (after seeing peers' Round 1)
+  Quant      APPROVE  (conf 0.62)
+  Risk       MODIFY   (conf 0.78)   <- formal dissent
+  Compliance APPROVE  (conf 0.90)
+
+VERDICT: APPROVED  (2 approve / 0 reject / 1 modify; Risk dissents)
+
+[INFO] Wrote docs/debate-transcript.jsonl (16 events)
+[INFO] Wrote docs/equity-curve.png
+
+# Backtest metrics above (return +82.23%, Sharpe 0.862, max DD -18.17%,
+# 3 trades) and the verdict (APPROVED 2/0/1 with Risk dissent) match the
+# real docs/sample-debate.md and docs/equity-curve.png exactly. The
+# offline mock-LLM debate is deterministic by design (random_state=42).
+# Surrounding [INFO] lines are illustrative.
